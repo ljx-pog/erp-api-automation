@@ -1,0 +1,16 @@
+# ==========================================
+# 配置模板: 复制本文件为 config.yaml, 填入自己的真实值
+# (真实 config.yaml 含敏感信息, 已被 .gitignore 排除)
+# ==========================================
+
+base_url: http://localhost:9999/jshERP-boot   # ERP 后端地址
+timeout: 10                                  # 请求超时(秒)
+
+redis:
+  cli: D:/你的路径/redis/redis-cli.exe       # redis-cli 的完整路径
+  password: 你的Redis密码
+  captcha_key_prefix: "captcha_codes:"
+
+account:
+  login_name: admin
+  password_md5: 你的密码MD5值                # MD5("123456") = e10adc3949ba59abbe56e057f20f883e

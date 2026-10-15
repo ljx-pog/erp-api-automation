@@ -1,0 +1,5 @@
+﻿requests>=2.31.0
+pytest>=8.0.0
+PyYAML>=6.0
+pytest-html>=4.0.0
+allure-pytest>=2.13.0
