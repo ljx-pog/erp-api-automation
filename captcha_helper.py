@@ -3,8 +3,11 @@
 import subprocess
 import yaml
 
-with open("config.yaml", encoding="utf-8") as f:
-    config = yaml.safe_load(f)
+try:
+    with open("config.yaml", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+except FileNotFoundError:
+    config = {}   # 云上(CI)没有 config.yaml: 允许 import, 真正读验证码时才会用到配置
 
 
 def read_captcha(uuid):

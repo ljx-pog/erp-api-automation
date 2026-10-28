@@ -3,15 +3,17 @@
 import subprocess
 import yaml
 import pytest
-from pygments.lexers import data
 
 from request_client import RequestClient
 
 from captcha_helper import read_captcha
 
 
-with open("config.yaml", encoding="utf-8") as f:
-    config = yaml.safe_load(f)
+try:
+    with open("config.yaml", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+except FileNotFoundError:
+    config = {}   # 云上(CI)没有 config.yaml: 允许收集用例, 只有真跑接口时才需要它
 
 
 @pytest.fixture

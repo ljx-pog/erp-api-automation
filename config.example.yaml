@@ -14,3 +14,10 @@ redis:
 account:
   login_name: admin
   password_md5: 你的密码MD5值                # MD5("123456") = e10adc3949ba59abbe56e057f20f883e
+
+db:
+  host: 127.0.0.1                            # MySQL 地址
+  port: 3306
+  user: root
+  password: "你的数据库密码"
+  database: jsh_erp                          # 数据库名

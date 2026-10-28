@@ -1,0 +1,28 @@
+# GitHub Actions 流水线: push 代码 → 云端自动跑冒烟测试
+# 文件位置必须是 .github/workflows/ 目录下, GitHub 会自动发现它
+name: API 自动化冒烟测试
+
+on:
+  push:                       # 每次 git push 都触发
+    branches: [main]
+  pull_request:               # 提 PR 也触发
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest    # GitHub 送的云电脑(装好 Ubuntu 的虚拟机)
+
+    steps:
+      - name: 下载代码
+        uses: actions/checkout@v4
+
+      - name: 装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      - name: 跑冒烟测试
+        run: pytest test_offline.py -v --tb=short
